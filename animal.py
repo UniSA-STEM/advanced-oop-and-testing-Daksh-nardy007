@@ -29,7 +29,7 @@ class Animal:
     def getEnvironment(self):
         return self.__environment
 
-    def makeSoung(self):
+    def makeSound(self):
         return self.__name+' makes sound.'
     def eat(self):
         return self.__name+'eats'+self.__diet
