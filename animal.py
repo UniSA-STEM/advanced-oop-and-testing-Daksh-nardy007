@@ -16,3 +16,26 @@ class Animal:
         self.__environment = environment
         self.__health_record = None
 
+    def getName(self):
+        return self.__name
+    def getSpecies(self):
+        return self.__species
+    def getAge(self):
+        return self.__age
+    def getDiet(self):
+        return self.__diet
+    def getCategory(self):
+        return self.__category
+    def getEnvironment(self):
+        return self.__environment
+
+    def makeSoung(self):
+        return self.__name+' makes sound.'
+    def eat(self):
+        return self.__name+'eats'+self.__diet
+    def sleep(self):
+        return self.__name+'is sleeping.'
+    def getHealthRecord(self):
+        return self.__health_record
+    def addHealthRecord(self, healthRecord):
+        self.__health_record = healthRecord
