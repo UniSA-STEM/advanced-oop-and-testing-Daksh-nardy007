@@ -14,7 +14,8 @@ class Animal:
         self.__diet = diet
         self.__category = category
         self.__environment = environment
-        self.__health_record = None
+        self.__healthRecord = None
+        self.__hunger = 60
 
     def getName(self):
         return self.__name
@@ -28,6 +29,8 @@ class Animal:
         return self.__category
     def getEnvironment(self):
         return self.__environment
+    def getHunger(self):
+        return self.__hunger
 
     def makeSound(self):
         return self.__name+' makes sound.'
@@ -38,4 +41,10 @@ class Animal:
     def getHealthRecord(self):
         return self.__health_record
     def addHealthRecord(self, healthRecord):
-        self.__health_record = healthRecord
+        self.__healthRecord = healthRecord
+
+    def feedAnimal(self,amount):
+        if amount < 0:
+            amount = 0
+        self.__hunger = max(0, self.__hunger - amount)
+        return "Now hunger is "+self.__hunger
