@@ -1,11 +1,12 @@
 '''
-File: filename.py
+File: animal.py
 Description: A brief description of this Python module.
-Author: Billy Bizilis
-ID: 110100110
-Username: bizvy001
+Author: Daksh Narang
+ID: 110402195
+Username: Nardy007
 This is my own work as defined by the University's Academic Integrity Policy.
 '''
+
 class Animal:
     def __init__(self, name, species, age, diet, category, environment):
         self.__name= name
@@ -39,12 +40,13 @@ class Animal:
     def sleep(self):
         return self.__name+'is sleeping.'
     def getHealthRecord(self):
-        return self.__health_record
+        return self.__healthRecord
     def addHealthRecord(self, healthRecord):
         self.__healthRecord = healthRecord
 
     def feedAnimal(self,amount):
         if amount < 0:
             amount = 0
+        before = self.__hunger
         self.__hunger = max(0, self.__hunger - amount)
-        return "Now hunger is "+self.__hunger
+        return "Now hunger is " + str(self.__hunger)
