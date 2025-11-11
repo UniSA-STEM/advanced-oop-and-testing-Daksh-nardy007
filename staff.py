@@ -1,11 +1,12 @@
 '''
-File: filename.py
+File: staff.py
 Description: A brief description of this Python module.
 Author: Daksh Narang
 ID: 110402195
-Username: nardy007
+Username: Nardy007
 This is my own work as defined by the University's Academic Integrity Policy.
 '''
+
 class Staff:
     def __init__(self,name, role):
         self.name = name
