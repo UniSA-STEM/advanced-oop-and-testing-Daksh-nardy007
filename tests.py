@@ -1,3 +1,12 @@
+'''
+File: tests.py
+Description: A brief description of this Python module.
+Author: Daksh Narang
+ID: 110402195
+Username: Nardy007
+This is my own work as defined by the University's Academic Integrity Policy.
+'''
+
 import unittest
 
 from animal import Animal
@@ -22,4 +31,9 @@ class TestZooSystem(unittest.TestCase):
         self.assertEqual(animal.getEnvironment(), "outback")
         self.assertEqual(animal.getHunger(), 60)
 
+    def test_animal_feeding_reduces_hunger(self):
+        animal = Animal("Roo", "Kangaroo", 6, "herbivore", "Mammal", "outback")
+        msg = animal.feedAnimal(30)
+        self.assertEqual(animal.getHunger(), 30)
+        self.assertEqual(msg, "Now hunger is 30")
 
