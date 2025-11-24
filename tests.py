@@ -65,4 +65,21 @@ class TestZooSystem(unittest.TestCase):
         text_after = str(record)
         self.assertIn("Resolved", text_after)
 
+    def test_enclosure_add_remove_and_clean(self):
+        enc = Enclosure("Outback Habitat", "outback", 3)
+        roo = Mammal("Roo", "Kangaroo", 6, "herbivore", "Mammal", "outback")
+
+        self.assertEqual(len(enc.animals), 0)
+
+        enc.addAnimal(roo)
+        self.assertEqual(len(enc.animals), 1)
+        self.assertEqual(enc.animals[0], roo)
+
+        enc.cleanliness = 40
+        msg = enc.cleanEnclosure()
+        self.assertEqual(enc.cleanliness, 100)
+        self.assertIn("Outback Habitat", msg)
+
+        enc.removeAnimal(roo)
+        self.assertEqual(len(enc.animals), 0)
 
