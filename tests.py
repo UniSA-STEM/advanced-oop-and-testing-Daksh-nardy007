@@ -53,3 +53,16 @@ class TestZooSystem(unittest.TestCase):
         self.assertIn("ooo aaaa", mammal.makeSound())
         self.assertIn("chirping", bird.makeSound())
         self.assertIn("hiss", reptile.makeSound().lower())
+
+    def test_health_record_string_and_resolve(self):
+        record = HealthRecord("Minor flipper abrasion", "2025-11-12", "low", "Apply antiseptic daily")
+        text_before = str(record)
+        self.assertIn("Minor flipper abrasion", text_before)
+        self.assertIn("Severity: low", text_before)
+        self.assertIn("Active", text_before)
+
+        record.resolved()
+        text_after = str(record)
+        self.assertIn("Resolved", text_after)
+
+
