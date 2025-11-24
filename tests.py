@@ -42,3 +42,14 @@ class TestZooSystem(unittest.TestCase):
         msg = animal.feedAnimal(200)
         self.assertEqual(animal.getHunger(), 0)
         self.assertEqual(msg, "Now hunger is 0")
+
+    def test_animal_and_subclass_sounds(self):
+        base = Animal("Generic", "Unknown", 1, "mixed", "Other", "anywhere")
+        mammal = Mammal("Roo", "Kangaroo", 6, "herbivore", "Mammal", "outback")
+        bird = Bird("Pebble", "Little Penguin", 3, "piscivore", "Bird", "coastal_aviary")
+        reptile = Reptile("Stumpy", "Shingleback", 5, "insectivore", "Reptile", "outback")
+
+        self.assertIn("makes sound", base.makeSound())
+        self.assertIn("ooo aaaa", mammal.makeSound())
+        self.assertIn("chirping", bird.makeSound())
+        self.assertIn("hiss", reptile.makeSound().lower())
