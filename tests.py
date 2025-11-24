@@ -103,6 +103,38 @@ class TestZooSystem(unittest.TestCase):
         self.assertEqual(forest.animals, [koala])
         self.assertEqual(aviary.animals, [penguin])
 
+    def test_zookeeper_feeds_and_cleans(self):
+        zoo = Zoo("Adelaide City Zoo")
+        forest = Enclosure("Australian Forest", "eucalyptus_forest", 3)
+        aviary = Enclosure("Coastal Aviary", "coastal_aviary", 3)
+        zoo.addEnclosure(forest)
+        zoo.addEnclosure(aviary)
 
+        koala = Mammal("Koko", "Koala", 4, "herbivore", "Mammal", "eucalyptus_forest")
+        penguin = Bird("Pebble", "Little Penguin", 3, "piscivore", "Bird", "coastal_aviary")
+        zoo.addAnimal(koala)
+        zoo.addAnimal(penguin)
+        zoo.assignAnimalToEnclosure(koala, forest)
+        zoo.assignAnimalToEnclosure(penguin, aviary)
+
+        keeper = Zookeeper("Alex")
+        zoo.addStaff(keeper)
+        keeper.assignToEnclosure(forest)
+        keeper.assignToEnclosure(aviary)
+
+        self.assertEqual(koala.getHunger(), 60)
+        self.assertEqual(penguin.getHunger(), 60)
+
+        keeper.feedAnimal()
+
+        self.assertEqual(koala.getHunger(), 30)
+        self.assertEqual(penguin.getHunger(), 30)
+
+        forest.cleanliness = 42
+        aviary.cleanliness = 59
+
+        keeper.cleanEnclosure()
+        self.assertEqual(forest.cleanliness, 100)
+        self.assertEqual(aviary.cleanliness, 100)
 
 
