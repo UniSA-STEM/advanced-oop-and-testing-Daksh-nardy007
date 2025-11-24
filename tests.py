@@ -37,3 +37,8 @@ class TestZooSystem(unittest.TestCase):
         self.assertEqual(animal.getHunger(), 30)
         self.assertEqual(msg, "Now hunger is 30")
 
+    def test_animal_feeding_not_below_zero(self):
+        animal = Animal("Roo", "Kangaroo", 6, "herbivore", "Mammal", "outback")
+        msg = animal.feedAnimal(200)
+        self.assertEqual(animal.getHunger(), 0)
+        self.assertEqual(msg, "Now hunger is 0")
