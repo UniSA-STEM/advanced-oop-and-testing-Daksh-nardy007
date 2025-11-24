@@ -83,3 +83,26 @@ class TestZooSystem(unittest.TestCase):
         enc.removeAnimal(roo)
         self.assertEqual(len(enc.animals), 0)
 
+    def test_zoo_adds_and_assigns(self):
+        zoo = Zoo("Adelaide City Zoo")
+        forest = Enclosure("Australian Forest", "eucalyptus_forest", 3)
+        aviary = Enclosure("Coastal Aviary", "coastal_aviary", 3)
+        zoo.addEnclosure(forest)
+        zoo.addEnclosure(aviary)
+
+        koala = Mammal("Koko", "Koala", 4, "herbivore", "Mammal", "eucalyptus_forest")
+        penguin = Bird("Pebble", "Little Penguin", 3, "piscivore", "Bird", "coastal_aviary")
+        zoo.addAnimal(koala)
+        zoo.addAnimal(penguin)
+
+        self.assertEqual(len(zoo.getAnimals()), 2)
+        self.assertEqual(len(zoo.getEnclosures()), 2)
+
+        zoo.assignAnimalToEnclosure(koala, forest)
+        zoo.assignAnimalToEnclosure(penguin, aviary)
+        self.assertEqual(forest.animals, [koala])
+        self.assertEqual(aviary.animals, [penguin])
+
+
+
+
